@@ -90,15 +90,8 @@ public class YamlConfig
 	
 	public void set(String str, Object obj)
 	{
-		if(obj instanceof Integer)
-		{
-			obj = obj.toString();
-		}
-		else if(obj instanceof Boolean)
-		{
-			obj = obj.toString();
-		}
-		prop.put(str, obj);
+		String strd = obj.toString();
+		prop.put(str, strd);
 		try 
 		{
 			FileWriter writer = new FileWriter(file);
