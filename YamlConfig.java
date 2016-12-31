@@ -65,6 +65,11 @@ public class YamlConfig
 		return obj;
 	}
 	
+	public int getInt(String str)
+	{
+		return Integer.parseInt(get(str));
+	}
+	
 	public void set(String str, Object obj)
 	{
 		if(obj instanceof Integer)
