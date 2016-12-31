@@ -19,18 +19,21 @@ public class YamlConfig
 	private String project_name;
 	private File file;
 	private Properties prop;
+	@SuppressWarnings("unused")
+	private String path;
 	
-	public YamlConfig(String name, String project_name)
+	public YamlConfig(String name, String project_name, String path)
 	{
 		this.name = name;
 		this.project_name = project_name;
+		this.path = path;
 		
-		File file_folder = new File("C:/"+project_name+"/config/");
+		File file_folder = new File(path+project_name+"/config/");
 		file_folder.mkdirs();
-		file = new File("C:/"+project_name+"/config/"+name+".yml");
+		file = new File(path+project_name+"/config/"+name+".yml");
 		if(!file.exists())
 		{
-			try 
+			try
 			{
 				file.createNewFile();
 			} 
