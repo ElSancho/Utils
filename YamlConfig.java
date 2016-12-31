@@ -70,12 +70,31 @@ public class YamlConfig
 	
 	public int getInt(String str)
 	{
-		return Integer.parseInt(get(str));
+		String result = get(str);
+		if(result == null)
+		{
+			return 0;
+		}
+		return Integer.parseInt(result);
+	}
+	
+	public boolean getBoolean(String str)
+	{
+		String result = get(str);
+		if(result == null)
+		{
+			return false;
+		}
+		return Boolean.parseBoolean(result);
 	}
 	
 	public void set(String str, Object obj)
 	{
 		if(obj instanceof Integer)
+		{
+			obj = obj.toString();
+		}
+		else if(obj instanceof Boolean)
 		{
 			obj = obj.toString();
 		}
