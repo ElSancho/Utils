@@ -22,7 +22,7 @@ public class YamlConfig
 	@SuppressWarnings("unused")
 	private String path;
 	
-	public YamlConfig(String name, String project_name, String path)
+	public YamlConfig(String name, String path, String project_name)
 	{
 		this.name = name;
 		this.project_name = project_name;
@@ -58,11 +58,11 @@ public class YamlConfig
 		} 
 		catch (FileNotFoundException e) 
 		{
-			System.err.println("Impossible d'ouvrir le fichier demandé"+e.getMessage());
+			System.err.println("Impossible d'ouvrir le fichier demandé : "+e.getMessage());
 		} 
 		catch (IOException e) 
 		{
-			System.err.println("Impossible d'ouvrir le fichier demandé"+e.getMessage());
+			System.err.println("Impossible d'ouvrir le fichier demandé : "+e.getMessage());
 			e.printStackTrace();
 		}
 		return obj;
@@ -100,7 +100,7 @@ public class YamlConfig
 		} 
 		catch (IOException e) 
 		{
-			System.err.println("Impossible d'écrire dans fichier demandé"+e.getMessage());
+			System.err.println("Impossible d'écrire dans fichier demandé : "+e.getMessage());
 		}
 	}
 }
