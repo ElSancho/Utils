@@ -1,0 +1,65 @@
+import java.io.File;
+
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
+
+/**
+ * YmlConfig.java Parts of Argosia
+ *
+ * @author Sanchobaya
+ * @copyrights All rights reserved
+ * @date 3 janv. 2017
+ * @version 1.0.0
+ * 
+ */
+public class YmlConfig 
+{
+	private Plugin plugin;
+	private String name;
+	private File file;
+	private YamlConfiguration config;
+	
+	public YmlConfig(String name, Plugin plugin)
+	{
+		this.plugin = plugin;
+		this.name = name;
+		this.file = new File(plugin.getDataFolder(), name);
+		this.config = null;
+		
+		this.plugin.saveResource(name, false);
+		this.config = YamlConfiguration.loadConfiguration(this.file);
+	}
+	
+	public void set(String identifier, Object object)
+	{
+		config.set(identifier, object);
+	}
+	
+	public Object get(String identifier, Object obj)
+	{
+		return config.get(identifier, obj);
+	}
+	
+	public YamlConfiguration getYaml()
+	{
+		return config;
+	}
+	
+	public void save()
+	{
+		try
+		{
+			config.save(file);
+		}
+		catch(Exception e)
+		{
+			System.err.println("Erreur lors de la sauvegarde du fichier "+name+" : "+e.getMessage());
+		}
+	}
+	
+	public void reload()
+	{
+		save();
+		config = YamlConfiguration.loadConfiguration(file);
+	}
+}
